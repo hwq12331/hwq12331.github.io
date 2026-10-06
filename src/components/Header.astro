@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import { route } from '../data/profile';
+---
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="wordmark" href={route()} aria-label="Hussain Alqassab — Home"><span class="monogram">h<span>.</span>a</span><span class="wordmark-name">Hussain Alqassab</span></a>
+    <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+      <a href={route('#about')}>About</a>
+      <a href={route('#experience')}>Experience</a>
+      <a href={route('#work')}>Projects</a>
+      <a href={route('journal/')}>Journal</a>
+      <a class="nav-contact" href={route('#contact')}>Let’s talk <Icon name="external" size={16} /></a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark theme" title="Change color theme"><span class="theme-moon"><Icon name="moon" /></span><span class="theme-sun"><Icon name="sun" /></span></button>
+      <button class="icon-button menu-toggle" type="button" aria-label="Open navigation" aria-controls="main-navigation" aria-expanded="false"><span class="menu-open-icon"><Icon name="menu" /></span><span class="menu-close-icon"><Icon name="close" /></span></button>
+    </div>
+  </div>
+</header>

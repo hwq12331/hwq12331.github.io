@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+import Icon from './Icon.astro';
+interface Props { posts: CollectionEntry<'journal'>[]; }
+const { posts } = Astro.props;
+const topics = [{ label: 'All notes', value: 'all' }, { label: 'Transformation', value: 'Digital transformation' }, { label: 'Data & ML', value: 'Data & ML' }, { label: 'Interfaces & UX', value: 'Interfaces & UX' }];
+---
+<div class="journal-browser" data-journal-browser>
+  <div class="journal-toolbar"><div class="topic-filters" role="group" aria-label="Filter journal by topic">{topics.map((topic, index) => <button type="button" data-topic={topic.value} aria-pressed={index === 0}>{topic.label}</button>)}</div><label class="journal-search"><Icon name="search" size={18} /><span class="sr-only">Search journal</span><input type="search" placeholder="Find a note…" aria-label="Search journal" data-journal-search /></label></div>
+  <div class="journal-result-line"><span data-journal-status role="status" aria-live="polite">{posts.length} notes</span><span>Ideas from the things I build.</span></div>
+  <div class="blog-grid">{posts.map(post => <BlogCard post={post} searchable />)}</div>
+  <div class="journal-empty" data-journal-empty hidden><Icon name="search" size={30} /><h3>No notes found.</h3><p>Try a different word or explore another topic.</p><button type="button" class="button button-secondary" data-journal-reset>Show all notes <Icon name="arrow" size={17} /></button></div>
+</div>

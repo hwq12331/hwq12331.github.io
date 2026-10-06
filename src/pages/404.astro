@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { route } from '../data/profile';
+---
+<BaseLayout title="Page not found — Hussain Alqassab"><section class="container not-found"><span class="eyebrow"><span></span>404 / A SMALL DETOUR</span><h1>This idea hasn’t<br /><em>become a page yet.</em></h1><p>The link may have changed. Let’s get you back to the work and the field notes.</p><a class="button button-primary" href={route()}>Back to the portfolio <Icon name="arrow" /></a></section></BaseLayout>

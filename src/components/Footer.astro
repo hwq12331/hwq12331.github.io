@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+import { profile, route } from '../data/profile';
+---
+<footer class="site-footer">
+  <div class="container footer-top">
+    <a class="wordmark footer-wordmark" href={route()}><span class="monogram">h<span>.</span>a</span><span>Thoughtful systems.<br />Useful experiences.</span></a>
+    <p>A personal space for my work,<br />my learning, and the ideas in between.</p>
+    <div class="footer-socials">
+      <a class="icon-button" href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="Hussain on GitHub"><Icon name="github" /></a>
+      <a class="icon-button" href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Hussain on LinkedIn"><Icon name="linkedin" /></a>
+      <a class="icon-button" href={route('rss.xml')} aria-label="Journal RSS feed"><Icon name="rss" /></a>
+      <a class="icon-button" href={`mailto:${profile.email}`} aria-label="Email Hussain"><Icon name="mail" /></a>
+    </div>
+  </div>
+  <div class="container footer-bottom"><span>© {new Date().getFullYear()} Hussain Alqassab</span><span>Dammam, Saudi Arabia <span class="tiny-dot"></span> Built with Astro</span><a href="#top">Back to top ↑</a></div>
+</footer>

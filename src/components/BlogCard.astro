@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import ArticleCover from './ArticleCover.astro';
+import { formatDate, readingTime, route } from '../data/profile';
+interface Props { post: CollectionEntry<'journal'>; searchable?: boolean; }
+const { post, searchable = false } = Astro.props;
+const search = `${post.data.title} ${post.data.description} ${post.data.category} ${post.body || ''}`.toLowerCase();
+---
+<article class="blog-card" data-journal-card={searchable ? '' : undefined} data-category={post.data.category} data-search={searchable ? search : undefined}>
+  <a class="blog-cover-link" href={route(`journal/${post.id}/`)} aria-label={`Read ${post.data.title}`}><ArticleCover kind={post.data.cover} /></a>
+  <div class="blog-card-body"><span class:list={['category-label', `category-${post.data.cover}`]}>{post.data.category}</span><h3><a href={route(`journal/${post.id}/`)}>{post.data.title}</a></h3><p>{post.data.description}</p><div class="blog-card-meta"><span>{formatDate(post.data.published)} <span>·</span> {readingTime(post.body)} min read</span><a href={route(`journal/${post.id}/`)} aria-label={`Read ${post.data.title}`}><Icon name="external" /></a></div></div>
+</article>

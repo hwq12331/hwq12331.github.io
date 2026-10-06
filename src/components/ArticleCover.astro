@@ -1,0 +1,9 @@
+---
+interface Props { kind: 'workflow' | 'analytics' | 'interface'; class?: string; }
+const { kind, class: className = '' } = Astro.props;
+---
+<div class:list={['article-cover', `cover-${kind}`, className]} aria-hidden="true">
+  {kind === 'workflow' && <div class="workflow-illustration"><div class="cover-window-bar"><i></i><i></i><i></i><span>WORKFLOW / 01</span></div><div class="workflow-nodes"><div><span>01</span>Request</div><b>→</b><div><span>02</span>Review</div><b>→</b><div><span>03</span>Track</div></div><div class="workflow-cover-bottom"><span class="cover-pill">Projects</span><span class="cover-pill">Procurement</span><span class="cover-pill">Quality</span></div></div>}
+  {kind === 'analytics' && <div class="analytics-illustration"><span class="cover-code-label">TIME-AWARE / RESEARCH</span><svg viewBox="0 0 360 116" fill="none"><path d="M0 24h360M0 60h360M0 96h360" stroke="currentColor" opacity=".13"/><path d="M15 85h80V37h75v32h64V20h90" stroke="currentColor" stroke-width="3"/><circle cx="95" cy="37" r="4" fill="currentColor"/><circle cx="170" cy="69" r="4" fill="currentColor"/><path d="M239 6v103" stroke="currentColor" stroke-dasharray="5 5" opacity=".7"/></svg><div class="cover-analysis-labels"><span>TRAIN</span><span>GAP</span><span>TEST</span></div></div>}
+  {kind === 'interface' && <div class="interface-illustration"><div class="mini-phone"><div class="mini-phone-notch"></div><span lang="ar" dir="rtl">مرحباً</span><div class="mini-gauge"><span>UI</span></div><div class="mini-phone-line"></div><div class="mini-phone-buttons"><i></i><i></i></div></div><div class="interface-cover-text"><span class="cover-code-label">THOUGHTFUL INTERFACES</span><span class="cover-language" lang="ar">العربية</span><span class="cover-language">English</span><small>RTL ↔ LTR</small></div></div>}
+</div>
